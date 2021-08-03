@@ -54,4 +54,54 @@ int add(int num1, int num2) {
 ```
 
 Before function name you add what this function will return, if use `void` that means it doesn't return nothing in the example, the function will return a `integer`.
-Also in example, you can assign type in parameter, it's for whenever you pass parameter, it must match the type defined in function definition
+Also in example, you can assign type in parameter, it's for whenever you pass parameter, it must match the type defined in function definition.
+
+### Variable in Dart
+
+in Dart, you can define a variable by using `var` keyword. the syntax is:
+
+```
+var [variable name] = [value]
+```
+
+The other ways to create variable is by directly assign Type in the front of variable name.
+
+```dart
+String str = "foo";
+// Note: string type always begin with uppercase
+```
+
+But if you define a variable that have initial value, it's better to let Dart infer the type automatically instead.
+
+Assign type in variable if that variable doesn't have initial value
+
+### Object and Class in Dart
+
+- Dart is Object-Oriented Programming
+  Almost everything in Dart is an Object
+
+- Create an Object
+  To create `Object` you must create blueprint, which is a `class`. To define a class you can use this syntaxt:
+
+  ```dart
+  // Person is class name
+  class Person {
+  	// property with initial value
+  	var name = "foo";
+  	var age = 23;
+  }
+  ```
+
+  and than, you can create an `object` based on `Person` class. You can define a variable that will hold an object by assign `Person` class:
+
+  ```dart
+  var p1 = Person();
+  ```
+
+  You can access and re-assign the property with dot notation (like in JS)
+
+  ```dart
+  p1.name // "Yoga"
+  p1.name = "Budi"
+  print(p1.name) // "Budi"
+  ```
