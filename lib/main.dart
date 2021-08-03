@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  
+  runApp(App());
 }
 
 // create a class that will hold as entire App

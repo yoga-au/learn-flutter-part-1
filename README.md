@@ -149,3 +149,14 @@ class App extends StatelessWidget {
 
 `build` method return widget, we can return a widget called `MaterialApp`. `MaterialApp` widget handle multiple widget and display it to the app.
 `MaterialApp` accept parameters, one of parameter is `(home: )`. Home parameter will bring widget to the screen when app is mounted.
+
+### Running the Widget on emulator
+
+To run the widget to the emulator, we can run `runApp()` function provided by `flutter/material`. Pass your class/widget as parameter to the `runApp` and then run the emulator.
+
+```dart
+void main() {
+  // to instatiate a class, add () in the end of class name
+  runApp(App())
+}
+```
