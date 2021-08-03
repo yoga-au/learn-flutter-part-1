@@ -105,3 +105,47 @@ Assign type in variable if that variable doesn't have initial value
   p1.name = "Budi"
   print(p1.name) // "Budi"
   ```
+
+## Creating Quiz App
+
+### Create App from Scracth
+
+When you initialize flutter project, there's one file in lib folder called `main.dart`. `main.dart` is a file that will automatically detected by flutter as an entry point when the app first run.
+In `main.dart` there's on function called `main()`, that function will run first when the app is loaded.<br>
+
+Since in flutter App everything is a `Widget`, we need creat a widget that will hold the entire app itself.
+But first we need to import a package from flutter and later we can use core widget from flutter.
+
+```dart
+import 'package:flutter/material.dart';
+```
+
+Don't forget to define a `main()` function.
+
+```dart
+void main() {
+
+}
+```
+
+Then, we need to create a `widget` that will hold all widget that will be displayed in the app screen. We need to create a class since `widget` is special type class. Create a class that inherit `StatelessWidget` provided by flutter.
+
+```dart
+// to inherit a class, use extends keyword
+class App extends StatelessWidget {
+
+}
+```
+
+`StatelessWidget` class have a method which called `build()`. `build` method accept a parameter which is a `BuildContext` that will be passed automatically. build method return a `Widget`
+
+```dart
+class App extends StatelessWidget {
+  Widget build(BuildContext context) {
+
+  }
+}
+```
+
+`build` method return widget, we can return a widget called `MaterialApp`. `MaterialApp` widget handle multiple widget and display it to the app.
+`MaterialApp` accept parameters, one of parameter is `(home: )`. Home parameter will bring widget to the screen when app is mounted.
