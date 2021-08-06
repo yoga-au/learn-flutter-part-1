@@ -243,4 +243,33 @@ There's shorthand for function syntax in Dart:
 void main() => runApp();
 ```
 
-It looks like arrow function in JS, but it only run one expression
+It looks like arrow function in JS, but it only run one expression.
+
+## Create Quiz App
+
+### Make Scaffold, App Bar, Body
+
+To add a base of the flutter app, we can pass `Scaffold` widget in `MaterialApp`. `Scaffold` accept multiple argument, one of the argument is `appBar:`. Widget passed in `appBar` will be used as App Bar. Flutter have built-in `AppBar` widget.
+
+```dart
+return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Quiz App'),
+        ),
+      ),
+    );
+```
+
+We can also add `body` property. `body` accept Widget to display in app body, in the example, below app bar
+
+```dart
+return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Quiz App'),
+        ),
+        body: Text('This is body text from scaffold'),
+      ),
+    );
+```
