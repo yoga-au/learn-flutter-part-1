@@ -323,3 +323,26 @@ home: Scaffold(
 ```
 
 The button will appear greyed out since we passed `null` in `onPresssed` which means no function/disabled.
+
+### Add functions to onPressed
+
+Before adding funtions to `onPressed`, define the function itself, you want to define this function inside the widget since it's recommended the widget to standalone.
+
+```dart
+class App extends StatelessWidget {
+  // define function here
+
+  @override
+  ...
+}
+```
+
+Then, you provide **pointer** to the `onPressed`.
+
+```dart
+// NOT funtionName()
+RaisedButton(onPressed: functionName, child: "foo"),
+```
+
+**IMPORTANT NOTE**
+Don't pass `functionName()` (with brackets), because that means you immedietly execute the function when the button is rendered, which is not we want. We want to execute the function when is pressed therefore we provide a pointer to the function. Pointer to function can be given by typing the function name without brackets.
