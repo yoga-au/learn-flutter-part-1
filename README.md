@@ -346,3 +346,21 @@ RaisedButton(onPressed: functionName, child: "foo"),
 
 **IMPORTANT NOTE**
 Don't pass `functionName()` (with brackets), because that means you immedietly execute the function when the button is rendered, which is not we want. We want to execute the function when is pressed therefore we provide a pointer to the function. Pointer to function can be given by typing the function name without brackets.
+
+### Anonymous function
+
+Anonymous function in dart using this syntax:
+
+```dart
+() => // One code expression here
+```
+
+The arrow-function like syntax above can only do one expression
+
+```dart
+() {
+  // code here
+}
+```
+
+Syntax above can do multiple expression
