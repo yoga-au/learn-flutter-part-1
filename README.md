@@ -160,3 +160,75 @@ void main() {
   runApp(App())
 }
 ```
+
+### Class Constructor and Named Constructor
+
+Class also accept a parameter/argument like a function by using `constructor` method in the class. For example, we have class `person`:
+
+```dart
+class Person {
+  String name
+  int age
+}
+```
+
+To make a constructor, call the class inside the class itself like a function.
+
+```dart
+class Person {
+  late String name
+  int age = 0
+
+  Person(String name, int age) {
+    this.name = name
+    this.age = age
+  }
+}
+```
+
+`constructor` method will run when the class is intanciate in the firs time. In the example above, class `Person` accept 2 argument, and that argument will be assigned to `name` and `age`.
+**Note:** if you define a property with type, you must provide a default value, if you don't want to have default value, use `late` keyword in the front of property (not recommended).
+
+There's a shorthand if you have simple `constructor` like that:
+
+```dart
+class Person {
+  late String name
+  int age = 0
+
+  Person(this.name, this.age);
+  // equal to
+  // this.name = name
+  // this.age = age
+}
+```
+
+If you have `constructor` like that, when you instanciate the class with argument, that argument need in the exact order to correctly assign to it's property.
+To make it more flexible, we can make a `named constructor`, the syntax are:
+
+```dart
+class Person {
+  late String name
+  int age = 0
+
+  // wrap the argument in curly braces
+  Person({this.name, this.age});
+}
+
+// instanciate the class
+// pass the argument with [(args/prop name): (value)]
+var p1 = Person(name: "foo", age: 23);
+```
+
+However this make the argument is optional, which mean you can pass 0 argument. To make argument is required, one way to do that is by give it `required` keyword in front of the argument
+
+```dart
+class Person {
+  String name;
+  int age;
+
+  // you can delete the initial value or late keyword
+  // if you use required
+  Person({required this.name, required this.age});
+}
+```
