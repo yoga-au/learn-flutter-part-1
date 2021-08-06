@@ -232,3 +232,15 @@ class Person {
   Person({required this.name, required this.age});
 }
 ```
+
+### Override and Shorthand Function
+
+Provide `@override` keyword when you cancel the built in method from extended class and want to run the method by your own.<br>
+
+There's shorthand for function syntax in Dart:
+
+```dart
+void main() => runApp();
+```
+
+It looks like arrow function in JS, but it only run one expression
