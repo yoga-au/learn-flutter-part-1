@@ -273,3 +273,9 @@ return MaterialApp(
       ),
     );
 ```
+
+### Visible and Invisible Widget
+
+`body` property in `Scaffold` only can take one widget, therefore we can't only pass one widget like `Text`. `Text` widget also known as **Visible** widget, visible widget are widget that handle Output and Input, other example of visible widget are `Card`, `RaisedButton`.<br>
+
+**Invisible** widget are widget that not rendered into the screen, but can be useful to do for layouting widget or controlling the widget, example of invisible widget are `Row`, `Column`, `ListView`
