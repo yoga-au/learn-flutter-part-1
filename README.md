@@ -147,7 +147,7 @@ class App extends StatelessWidget {
 }
 ```
 
-`build` method return widget, we can return a widget called `MaterialApp`. `MaterialApp` widget handle multiple widget and display it to the app.
+`build` method return widget, we can return a widget called `MaterialApp`. `MaterialApp` widget handle multiple widget and display it to the app also responsible for creating the app.
 `MaterialApp` accept parameters, one of parameter is `(home: )`. Home parameter will bring widget to the screen when app is mounted.
 
 ### Running the Widget on emulator
@@ -279,3 +279,47 @@ return MaterialApp(
 `body` property in `Scaffold` only can take one widget, therefore we can't only pass one widget like `Text`. `Text` widget also known as **Visible** widget, visible widget are widget that handle Output and Input, other example of visible widget are `Card`, `RaisedButton`.<br>
 
 **Invisible** widget are widget that not rendered into the screen, but can be useful to do for layouting widget or controlling the widget, example of invisible widget are `Row`, `Column`, `ListView`
+
+### Using Layout Widget
+
+Pass in `Column` widget to make of layout that display element from top to bottom. `Column` widget accept `children` argument which is a `List` of widget.<br>
+
+**About List**
+`List` is data type in Dart, which is equivalent to `Array` in Javascript.
+
+```dart
+body: Column(
+  children: [
+    // multiple widget
+  ])
+```
+
+Let's add a `Text` widget, which hold the question. After that, use `RaisedButton` for the answer. `RaisedButton` is one of button widget, that have `child` and `onPressed` properties. `child` property is a content of the button and `onPressed` is a function to run when button is pressed/tap. For now, pass in `null` to `onPressed`.
+
+```dart
+home: Scaffold(
+    appBar: AppBar(
+      title: Text('Quiz App'),
+    ),
+    body: Column(
+      children: [
+        Text('Question here'),
+        RaisedButton(
+          onPressed: null,
+          child: Text('Answer 1'),
+        ),
+        RaisedButton(
+          onPressed: null,
+          child: Text('Answer 2'),
+        ),
+        RaisedButton(
+          onPressed: null,
+          child: Text('Answer 3'),
+        ),
+      ],
+    ),
+  ),
+);
+```
+
+The button will appear greyed out since we passed `null` in `onPresssed` which means no function/disabled.
