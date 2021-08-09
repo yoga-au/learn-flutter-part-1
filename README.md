@@ -521,3 +521,82 @@ children: [
   Answer(_answerQuestion),
 ],
 ```
+
+### Maps Data Type
+
+Other data type in dart is `Maps`. Shorthand `Maps` syntax almost like a JSON in JavaScript. Dart also have built in `Map()` class. `Maps` syntax written in `key: value` pair.
+
+```dart
+var questions = [
+  {
+    // key : value
+    'question': 'What\'s your favorite color?',
+    'answers': ['Yellow', 'Red', 'Blue', 'Purple'],
+  },
+  {
+    'question': 'What\'s your favorite animal?',
+    'answers': ['Eagle', 'Dragon', 'Cat', 'Dog'],
+  },
+  {
+    'question': 'What\'s your favorite game?',
+    'answers': ['Portal', 'Ping Pong', 'Zelda', 'Dota'],
+  },
+];
+```
+
+To access the value in `Maps`, the syntax are square bracket notation:
+
+```dart
+var questions = [
+  {
+    // key : value
+    'question': 'What\'s your favorite color?',
+    'answers': ['Yellow', 'Red', 'Blue', 'Purple'],
+  },
+  {
+    'question': 'What\'s your favorite animal?',
+    'answers': ['Eagle', 'Dragon', 'Cat', 'Dog'],
+  },
+  {
+    'question': 'What\'s your favorite game?',
+    'answers': ['Portal', 'Ping Pong', 'Zelda', 'Dota'],
+  },
+];
+
+// [List Name][index of the maps][key name]
+print(questions[0]['question']) // output: What's your favorite color?
+```
+
+### Mapping List to Widget
+
+Let's code our button programatically instead hard code it. We can render the button based on the length of the array by using `map()` method. `map()` will run a function that provided in each of the array value.
+
+```dart
+// select the list we want to use map method
+questions[_questionIndex]['answers']
+    .map(
+      // anonymous function to run each value of array
+      (answer) {
+  return Answer(_answerQuestion, answer);
+})
+```
+
+However, we will get an error from dart because `questions[_questionIndex]['answers']` it's unknown to dart what the data type is. Define the type for `questions[_questionIndex]['answers']` by wrap `questions[_questionIndex]['answers']` with brackets and add `as` keyword followed by type definition.
+
+```dart
+(questions[_questionIndex]['answers'] as List<String>)
+    .map((answer) {
+  return Answer(_answerQuestion, answer);
+})
+```
+
+Now, `children` argument accept only list of widget, but `map()` method return a `Iterable` or `List`. `children` can't read nested list, therefore we need to extract the `Widget` from `map()` by using **spread operator**. Spread operator shorthand syntax is `...`(triple dot)
+
+```dart
+// triple dot in the front is the spread operator
+...(questions[_questionIndex]['answers'] as List<String>)
+    .map((answer) {
+  return Answer(_answerQuestion, answer);
+  // toList() method to make sure the return value is list by converting it
+}).toList()
+```
