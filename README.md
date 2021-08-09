@@ -378,3 +378,40 @@ Add leading underscore to the properties/class/function/etc **name** to make pri
 ```dart
 var _string = "foo" // private variable
 ```
+
+### Creating custom widget
+
+one of flutter convention is `one class widget per file`. To make custom widget, simply create new dart file inside `lib` folder. With flutter extension, type in `st` to show a shortcut to make either `Stateless` or `Stateful` widget.<br>
+
+To receive data from outside the widget, we can add constructor to the widget, this behavior almost like props in React.
+
+```dart
+class Question extends StatelessWidget {
+  String questionText;
+
+  // constructor can be treated like props in react
+  Question({this.questionText});
+
+  @override
+  Widget build(BuildContext context) {
+    // use the text data from outside in Text widget
+    return Text(questionText);
+  }
+}
+```
+
+In `main.dart`, import the custom widget and pass in the argument that will be used by the custom widget.
+
+```dart
+// custom widget import
+import './question.dart';
+
+// pass in the data as argument
+Question(questionText: questions[_questionIndex])
+```
+
+In the `question.dart` you will see a warning that because we declare the widget properties is muttable, but we use `Stateless` widget which means all properties all immutable inside the widget. We need to declare that properties as immutable inside the widget by adding `final` keyword.
+
+```dart
+final String questionText;
+```

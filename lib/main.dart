@@ -1,4 +1,8 @@
+// package import
 import 'package:flutter/material.dart';
+
+// custom widget import
+import './question.dart';
 
 void main() => runApp(App());
 
@@ -6,7 +10,6 @@ void main() => runApp(App());
 class App extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _AppState();
   }
 }
@@ -35,7 +38,7 @@ class _AppState extends State<App> {
         ),
         body: Column(
           children: [
-            Text(questions[_questionIndex]),
+            Question(questionText: questions[_questionIndex]),
             RaisedButton(
               onPressed: _answerQuestion,
               child: Text('Answer 1'),
