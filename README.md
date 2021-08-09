@@ -464,3 +464,60 @@ Person.youngAdult(this.name) {
   this.age = 25;
 };
 ```
+
+### Passing Callback Function
+
+Let's separate our answer button to separate widget. Create `answer.dart` and create `Stateless` widget.
+
+```dart
+class Answer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.maxFinite,
+      child: RaisedButton(
+        onPressed: null,
+        child: Text("Answer"),
+        color: Colors.blue,
+      ),
+    );
+  }
+}
+```
+
+Instead defining the `onPressed` function in the widget, we can pass the function in the `main.dart` to `Answer` widget. Define the property of `answerHandler` that have `Function` type and define constructor that will accept the property.
+
+```dart
+class Answer extends StatelessWidget {
+  final Function answerHandler;
+
+  // constructor
+  Answer(this.answerHandler);
+
+  @override
+  // ...
+}
+```
+
+Now, import `Answer` widget to `main.dart` and replace `RaisedButton()` with `Answer()`.
+
+```dart
+children: [
+  Question(questionText: questions[_questionIndex]),
+  Answer(),
+  Answer(),
+  Answer(),
+],
+```
+
+To pass function to widget and do lifting the state up, you can pass the **pointer** of the function you want to give to the `Answer` widget.
+
+```dart
+children: [
+  Question(questionText: questions[_questionIndex]),
+  // don't use braces
+  Answer(_answerQuestion),
+  Answer(_answerQuestion),
+  Answer(_answerQuestion),
+],
+```
