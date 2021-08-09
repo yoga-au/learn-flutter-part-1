@@ -415,3 +415,42 @@ In the `question.dart` you will see a warning that because we declare the widget
 ```dart
 final String questionText;
 ```
+
+### First styling, Text and Container
+
+To style the `Text` widget, we can add `style` properties in `Text` widget. `style` property use `TextStyle` class, `TextStyle` class accept multiple argument, on of the argument is `fontSize`.
+
+```dart
+Text(
+  questionText,
+  style: TextStyle(fontSize: 24),
+),
+```
+
+`fontSize` accept a `double` data type, which represent logical pixel (dp).
+
+```dart
+Text(
+  questionText,
+  style: TextStyle(fontSize: 24),
+  textAlign: TextAlign.center,
+),
+```
+
+To adjust the text aligment, instead adding align argument in `TextStyle` class, we add `textAlign` argument in `Text` widget. `textAlign` argument accept `enum` from `TextAlign` class.<br>
+
+However, the text still appear in the left because `Text` widget have width of the width of the text itselft (not the entire screen). To make it appear in the center, we can wrap `Text` widget in the `Container` widget.
+
+```dart
+return Container(
+  width: double.maxFinite,
+  margin: EdgeInsets.only(top: 24, bottom: 24),
+  child: Text(
+    questionText,
+    style: TextStyle(fontSize: 24),
+    textAlign: TextAlign.center,
+  ),
+);
+```
+
+First, we need to pass `Text` widget we made before to `child` property in `Container`. Widget in `child` prop will be wrap around the container. `Container` have `width` property to adjust the property. `margin` property in `Container` follow box model in css, but we use `EdgeInsets` class to adjust the value of margin/padding.
