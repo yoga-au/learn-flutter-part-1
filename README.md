@@ -454,3 +454,13 @@ return Container(
 ```
 
 First, we need to pass `Text` widget we made before to `child` property in `Container`. Widget in `child` prop will be wrap around the container. `Container` have `width` property to adjust the property. `margin` property in `Container` follow box model in css, but we use `EdgeInsets` class to adjust the value of margin/padding.
+
+### Multiple constructor
+
+You can add multiple constructor in a class by using dot notation, example:
+
+```dart
+Person.youngAdult(this.name) {
+  this.age = 25;
+};
+```
