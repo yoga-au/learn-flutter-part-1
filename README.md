@@ -363,4 +363,8 @@ The arrow-function like syntax above can only do one expression
 }
 ```
 
-Syntax above can do multiple expression
+Syntax above can do multiple expression.
+
+### Update data correctly with stateful widget
+
+**Note:** need more explanation about stateful widget (initialize local state, how and why connect the `State` to `StatefulWidget`)
