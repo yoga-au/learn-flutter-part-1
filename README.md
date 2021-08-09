@@ -367,4 +367,14 @@ Syntax above can do multiple expression.
 
 ### Update data correctly with stateful widget
 
-**Note:** need more explanation about stateful widget (initialize local state, how and why connect the `State` to `StatefulWidget`)
+**Note:** need more explanation about stateful widget (initialize local state, how and why connect the `State` to `StatefulWidget`).
+
+### Private Property
+
+`private` syntax can be useful to protect your properties/class/function from being used in the other file when you import the dart file.
+
+Add leading underscore to the properties/class/function/etc **name** to make private.
+
+```dart
+var _string = "foo" // private variable
+```
