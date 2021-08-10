@@ -643,3 +643,7 @@ body: _questionIndex < questions.length
 ```
 
 **Quick note:** `Center` widget is a layout widget that will be positioned in the center vertically and horizontally.
+
+### Splitting widget
+
+It's good practice to split your widget tree into smaller custom widget if the widget tree getting too long/too many line
