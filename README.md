@@ -600,3 +600,21 @@ Now, `children` argument accept only list of widget, but `map()` method return a
   // toList() method to make sure the return value is list by converting it
 }).toList()
 ```
+
+### final vs const
+
+`const` keyword means every variable/object **must** have a value even before compiling and the data is immutable. For example `new DateTime.now()` is **not** a constant, because the method need to be executed first after compiling.
+
+```dart
+const a = 5 // this is okay since we immediately initialize the variable with value
+const b = DateTime.now() // this will show compile error since we don't know the initial value
+
+const c;
+c = 7
+// the code above also show compile error
+// since we initialize c with no value, initialization must be in the same line
+```
+
+**Note:** if the variable that contain `List` is const, the value in the list also become `const`.<br>
+
+`final` keyword is not checking the value at compile time, but after the compilation/build.
