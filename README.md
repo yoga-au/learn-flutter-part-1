@@ -730,3 +730,54 @@ child: Text(
   textAlign: TextAlign.center,
 ),
 ```
+
+### Resetting quiz when complete
+
+Add a button in `Result` widget, this means we need to wrap our `Text` widget with `Column`. With the help of flutter extensions, we can perform automatic refactor by placing your cursor to `Text` widget, then press `Ctrl + Shift + R`, then select `Wrap with column`. After the refactor is complete, add `RaisedButton` below `Text`. <br>
+
+We need to define a function that will handle the restarting process. The logic are by fire a `setState` to perform re-render, inside the `setState`, assign `_questionIndex` and `_score` to `0` so the question will be back to beginning.
+
+```dart
+// main.dart
+
+void _restart() {
+    setState(() {
+      _questionIndex = 0;
+      _score = 0;
+    });
+  }
+```
+
+```dart
+// result.dart
+
+class Result extends StatelessWidget {
+  final int score;
+  final Function restartHandler;
+
+  Result(this.score, this.restartHandler);
+
+  String get resultText {
+    //...
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        children: <Widget>[
+          Text(
+            resultText,
+            style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ),
+          RaisedButton(
+            onPressed: restartHandler, // remember to use pointer
+            child: Text('Restart'),
+          )
+        ],
+      ),
+    );
+  }
+}
+```

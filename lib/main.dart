@@ -50,6 +50,13 @@ class _AppState extends State<App> {
     },
   ];
 
+  void _restart() {
+    setState(() {
+      _questionIndex = 0;
+      _score = 0;
+    });
+  }
+
   void _answerQuestion(bool isCorrect) {
     if (isCorrect) {
       _score += 1;
@@ -73,7 +80,7 @@ class _AppState extends State<App> {
                   questionList: _questions,
                   questionIndex: _questionIndex,
                   answerHandler: _answerQuestion)
-              : Result(_score)),
+              : Result(_score, _restart)),
     );
   }
 }
