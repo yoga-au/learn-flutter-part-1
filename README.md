@@ -691,3 +691,42 @@ void _answerQuestion(bool isCorrect) {
     print(_score);
   }
 ```
+
+### Outputting Score using getter
+
+After we succesfully calculate the score, we can pass it to `Result` widget. Define the property and constructor for the score from upper widget. Then we can use **getter** to process the score and display a text based on the score. getter is special property from dart that mix between property and method, `get` method can't accept parameter since we can only return something when the getter name is referenced.
+
+```dart
+class Result extends StatelessWidget {
+  final int score;
+
+  Result(this.score);
+
+  // getter method with get keyword
+  String get resultText {
+    String output;
+
+    if (score < 3 && score > 0) {
+      output = 'Try to learn more';
+    } else if (score == 0) {
+      output = 'No correct answer';
+    } else {
+      output = 'You did it';
+    }
+
+    return output;
+  }
+
+  @override
+  // ...
+```
+
+And then we can reference `resultText` getter as `Text` argument.
+
+```dart
+child: Text(
+  resultText, // reference to getter
+  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+  textAlign: TextAlign.center,
+),
+```

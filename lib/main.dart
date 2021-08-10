@@ -73,7 +73,7 @@ class _AppState extends State<App> {
                   questionList: _questions,
                   questionIndex: _questionIndex,
                   answerHandler: _answerQuestion)
-              : Result()),
+              : Result(_score)),
     );
   }
 }
