@@ -18,6 +18,21 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   var _questionIndex = 0;
 
+  static const questions = [
+    {
+      'question': 'What\'s your favorite color?',
+      'answers': ['Yellow', 'Red', 'Blue', 'Purple'],
+    },
+    {
+      'question': 'What\'s your favorite animal?',
+      'answers': ['Eagle', 'Dragon', 'Cat', 'Dog'],
+    },
+    {
+      'question': 'What\'s your favorite game?',
+      'answers': ['Portal', 'Ping Pong', 'Zelda', 'Dota'],
+    },
+  ];
+
   void _answerQuestion() {
     setState(() {
       _questionIndex = _questionIndex + 1;
@@ -27,36 +42,25 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-    const questions = [
-      {
-        'question': 'What\'s your favorite color?',
-        'answers': ['Yellow', 'Red', 'Blue', 'Purple'],
-      },
-      {
-        'question': 'What\'s your favorite animal?',
-        'answers': ['Eagle', 'Dragon', 'Cat', 'Dog'],
-      },
-      {
-        'question': 'What\'s your favorite game?',
-        'answers': ['Portal', 'Ping Pong', 'Zelda', 'Dota'],
-      },
-    ];
-
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('Quiz App'),
-        ),
-        body: Column(
-          children: [
-            Question(questionText: questions[_questionIndex]['question']),
-            ...(questions[_questionIndex]['answers'] as List<String>)
-                .map((answer) {
-              return Answer(_answerQuestion, answer);
-            }).toList()
-          ],
-        ),
-      ),
+          appBar: AppBar(
+            title: Text('Quiz App'),
+          ),
+          body: _questionIndex < questions.length
+              ? Column(
+                  children: [
+                    Question(
+                        questionText: questions[_questionIndex]['question']),
+                    ...(questions[_questionIndex]['answers'] as List<String>)
+                        .map((answer) {
+                      return Answer(_answerQuestion, answer);
+                    }).toList()
+                  ],
+                )
+              : Center(
+                  child: Text('You did it!'),
+                )),
     );
   }
 }

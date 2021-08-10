@@ -618,3 +618,28 @@ c = 7
 **Note:** if the variable that contain `List` is const, the value in the list also become `const`.<br>
 
 `final` keyword is not checking the value at compile time, but after the compilation/build.
+
+### Render widget conditionally
+
+`if` statement in dart is almost like in JavaScript, except in dart there's no strictly equal (`===`) since dart is strong type language, you can use double equal to do equal operation. Also dart have `identical()` method.
+
+To render widget conditionally, one of the way to do that by using ternary operator (the syntax are the same with JavaScript). In the example, we will conditionally provide a widget to `body` property in `Scaffold`.
+
+```dart
+body: _questionIndex < questions.length
+    ? Column( // if true
+        children: [
+          Question(
+              questionText: questions[_questionIndex]['question']),
+          ...(questions[_questionIndex]['answers'] as List<String>)
+              .map((answer) {
+            return Answer(_answerQuestion, answer);
+          }).toList()
+        ],
+      )
+    : Center( // else
+        child: Text('You did it!'),
+      )),
+```
+
+**Quick note:** `Center` widget is a layout widget that will be positioned in the center vertically and horizontally.
