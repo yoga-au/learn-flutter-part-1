@@ -17,27 +17,48 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   var _questionIndex = 0;
+  var _score = 0;
 
   static const _questions = [
     {
       'question': 'What\'s your favorite color?',
-      'answers': ['Yellow', 'Red', 'Blue', 'Purple'],
+      'answers': [
+        {'text': 'Yellow', 'isCorrect': false},
+        {'text': 'Red', 'isCorrect': false},
+        {'text': 'Blue', 'isCorrect': true},
+        {'text': 'Purple', 'isCorrect': false}
+      ],
     },
     {
       'question': 'What\'s your favorite animal?',
-      'answers': ['Eagle', 'Dragon', 'Cat', 'Dog'],
+      'answers': [
+        {'text': 'Eagle', 'isCorrect': false},
+        {'text': 'Dragon', 'isCorrect': false},
+        {'text': 'Cat', 'isCorrect': true},
+        {'text': 'Dog', 'isCorrect': false}
+      ],
     },
     {
       'question': 'What\'s your favorite game?',
-      'answers': ['Portal', 'Ping Pong', 'Zelda', 'Dota'],
+      // 'answers': ['Portal', 'Ping Pong', 'Zelda', 'Dota'],
+      'answers': [
+        {'text': 'Portal', 'isCorrect': true},
+        {'text': 'Ping Pong', 'isCorrect': false},
+        {'text': 'Zelda', 'isCorrect': false},
+        {'text': 'Dota', 'isCorrect': false}
+      ],
     },
   ];
 
-  void _answerQuestion() {
+  void _answerQuestion(bool isCorrect) {
+    if (isCorrect) {
+      _score += 1;
+    }
+
     setState(() {
       _questionIndex = _questionIndex + 1;
     });
-    print(_questionIndex);
+    print(_score);
   }
 
   @override

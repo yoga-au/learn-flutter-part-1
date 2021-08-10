@@ -646,4 +646,48 @@ body: _questionIndex < questions.length
 
 ### Splitting widget
 
-It's good practice to split your widget tree into smaller custom widget if the widget tree getting too long/too many line
+It's good practice to split your widget tree into smaller custom widget if the widget tree getting too long/too many line.
+
+### Calculate score
+
+Let's implement a score calculation. First modify the `answer` key in `questions` list, instead of list of string, convert it to map to hold a `text` key which handle the output text and `isCorrect` key to determine wether the answer is correct or not.
+
+```dart
+{
+  'question': 'What\'s your favorite color?',
+  'answers': [
+    {'text': 'Yellow', 'isCorrect': false},
+    {'text': 'Red', 'isCorrect': false},
+    {'text': 'Blue', 'isCorrect': true},
+    {'text': 'Purple', 'isCorrect': false}
+  ],
+},
+```
+
+To do score calculation, we can put our logic in the function that attached in `onPressed` in the `Answer` widget, which is `_answerQuestion` function. We can pass `isCorrect` value to the function as parameter. Since we render `Answer` widget programmatically in `Quiz`, we can pass the parameter in there. We need to update the `map()` method because doesn't working correctly, we need to change `(questionList[questionIndex]['answers'] as List<String>)` especially the `List<String>` since we change the data type of `answers` key. Change it to `List<Map<String, Object>>`.
+
+```dart
+Question(questionText: questionList[questionIndex]['question']),
+...(questionList[questionIndex]['answers'] as List<Map<String, Object>>)
+    .map((answer) {
+  return Answer(
+      () => answerHandler(answer['isCorrect']), answer['text']);
+}).toList()
+```
+
+Also in the code snippet above, in the first argument of `Answer` we pass a **anonymous function** so we can pass parameter to it. Anonymous function in that will not executed immediately since we don't explicitly say 'Execute it' and the `answerHandler()` now will run whenever the anonymous funtion. <br>
+
+Now in `main.dart` we define a variable to hold a score, then in `_answerQuestion` we can accept a parameter of `boolean`, add if statement to check if the parameter true, if true add 1 to the score.
+
+```dart
+var _score = 0;
+
+void _answerQuestion(bool isCorrect) {
+    if (isCorrect) {
+      _score += 1;
+    }
+
+    // ...
+    print(_score);
+  }
+```
